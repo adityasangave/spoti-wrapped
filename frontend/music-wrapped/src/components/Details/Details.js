@@ -68,8 +68,8 @@ export default function Details() {
               <div key={item.id} className='trackItem card'>
                 <img src={item.album.images[0].url} alt={item.name} className='trackImage' />
                 <div className='trackDetails'>
-                  <h3 className='trackName'>{item.name}</h3>
-                  <p className='artistName'>{item.artists[0].name}</p>
+                  <div className='trackName'>{item.name}</div>
+                  <div className='artistName'>{item.artists[0].name}</div>
                 </div>
               </div>
             ))}
