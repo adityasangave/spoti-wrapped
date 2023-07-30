@@ -17,7 +17,7 @@ router.get('/authenticate', (req, res) => {
     console.log("triggered")
     res.set({
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Origin": "https://music-wrapped-main.vercel.app/",
     });
     const queryParameters = querystring.stringify({
         response_type: 'code',
