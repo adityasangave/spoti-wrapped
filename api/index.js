@@ -11,6 +11,7 @@ app.use(cors({
 }))
 
 app.use('/', authRoutes)
+app.use('/info', require('./routes/infoRoutes'))
 
 app.listen(8000, () => {
     console.log("Server started on port 8000")

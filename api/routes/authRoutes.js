@@ -53,7 +53,6 @@ router.get('/callback', (req, res) => {
         request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
                 access_token = body.access_token;
-                console.log("access token" + access_token+ "choice is" + choice)
 
                 const options = querystring.stringify({
                     'auth':true,

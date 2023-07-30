@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html,
+body {
+    height: 100%;
+    /* Make sure both html and body fill the entire viewport */
+    margin: 0;
+    /* Remove any default margin or padding */
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../../../public/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.container {
+    align-items: center;
+}
+
+.heading {
+    width: 350px;
+    margin: 10px auto;
+    font-size: 40px;
+    color: white;
+}
+
+/* Styles for the track section */
+.trackContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 45%;
+    gap: 10px;
+    /* Add some spacing between track items */
+}
+
+/* Styles for each individual track item */
+.trackItem {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin: 10px 0px;
+    transition: transform 0.2s ease;
+    /* Add a smooth transition effect */
+    background-color: #f9f9f9;
+    /* Light background color for the track item */
+}
+
+.trackItem:hover {
+    transform: scale(1.02);
+    /* Slightly enlarge the track item on hover */
+}
+
+.trackDetails {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: center;
+}
+
+.trackName {
+    font-size: 17px;
+    font-weight: bold;
+    /* Make the track name bold */
+    margin-bottom: 5px;
+    /* Add some spacing below the track name */
+}
+
+.artistName {
+    font-size: 12px;
+    color: #888;
+    /* Change the color of the artist name */
+}
+
+.trackImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Add a subtle box shadow for a card-like effect */
+.trackItem {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .trackItem {
+        height: auto;
+        padding: 15px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .trackDetails {
+        margin: 10px 0;
+    }
+}
+
+
+
+
+
+/* artist section design */
+.artistInfo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.artistContainer {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    flex-wrap: wrap;
+    /* Allow artists to wrap to the next line */
+    gap: 20px;
+    /* Add some spacing between artist items */
+}
+
+/* Styles for each individual artist item */
+.artistItem {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    margin: 15px;
+    transition: transform 0.2s ease;
+    /* Add a smooth transition effect */
+}
+
+.artistItem:hover {
+    transform: scale(1.05);
+    /* Enlarge the artist item on hover */
+}
+
+.artistImage {
+    width: 165px;
+    height: 175px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    /* Add some spacing below the image */
+}
+
+.artistDetails {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.artistName1 {
+    font-size: 14px;
+}
+
+.artistItem {
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles for artist section */
+@media (max-width: 768px) {
+    .artistContainer {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .artistItem {
+        width: 45%;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .artistItem {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
