@@ -5,13 +5,15 @@ const request = require('request')
 
 dotenv.config()
 const router = express.Router()
-
+let choice;
 router.get('/authenticate', (req, res) => {
     // Authenticate user here with spotify
     let client_id = process.env.CLIENT_ID
     let redirect_uri = process.env.REDIRECT_URI
     let scope = "user-top-read"
 
+    choice = req.query.value;
+    
     console.log("triggered")
     res.set({
         "Access-Control-Allow-Credentials": "true",
@@ -50,11 +52,17 @@ router.get('/callback', (req, res) => {
 
         request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-
                 access_token = body.access_token;
+                console.log("access token" + access_token+ "choice is" + choice)
 
-                console.log("access token" + access_token)
+                const options = querystring.stringify({
+                    'auth':true,
+                    'access_token':access_token,
+                    'choice': choice
+                });
+                res.redirect(`http://localhost:3000/wrapped?${options}`) 
             }
+            else res.redirect('http://localhost:3000/wrapped' + querystring.stringify({'auth':false}))
         })
 })
 

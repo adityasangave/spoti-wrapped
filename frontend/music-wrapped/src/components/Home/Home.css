@@ -1,0 +1,84 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#choice {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}
+
+/* Reset default styles for the select element */
+/* Reset default styles for the select element */
+.custom-select {
+    appearance: none;
+    background: transparent;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    width: 200px;
+    /* Adjust the width as per your preference */
+    cursor: pointer;
+    position: relative;
+}
+
+/* Style the arrow icon on the right using an inline SVG */
+.custom-select::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 10px;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Style the dropdown options */
+.custom-select option {
+    background: #fff;
+    color: #333;
+}
+
+/* Apply basic styles to the anchor element */
+.submit-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+/* Change background color on hover */
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Change background color on active/focus */
+.submit-button:active,
+.submit-button:focus {
+    background-color: #003d80;
+    outline: none;
+}
