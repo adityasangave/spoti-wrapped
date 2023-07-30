@@ -61,10 +61,8 @@ export default function Details() {
   const renderInfo = () => {
     return (
       <div className='container'>
-        <h1 className='heading tracks'>Your Top Songs</h1>
-        {loading ? (
-          <div className="progress-bar">Loading...</div>
-        ) : (
+      <div>
+      <h1 className='heading tracks'>Your Top Songs</h1>
           <div className='trackContainer'>
             {trackInfo?.items.slice(0, 5).map((item) => (
               <div key={item.id} className='trackItem card'>
@@ -76,12 +74,12 @@ export default function Details() {
               </div>
             ))}
           </div>
-        )}
+      </div>
+        
+
+
         <div className='artistInfo'>
           <h1 className='heading tracks'>Your Top Artists</h1>
-          {loading ? (
-            <div className="progress-bar">Loading...</div>
-          ) : (
             <div className='artistContainer'>
               {artistInfo?.items.slice(0, 5).map((artist) => (
                 <div key={artist.id} className='artistItem'>
@@ -93,7 +91,6 @@ export default function Details() {
                 </div>
               ))}
             </div>
-          )}
         </div>
       </div>
     );

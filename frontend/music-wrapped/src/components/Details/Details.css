@@ -11,6 +11,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 /* Add this CSS to make the progress bar visible */
@@ -125,11 +126,9 @@ body {
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 80%;
+    width: 100%;
     flex-wrap: wrap;
-    /* Allow artists to wrap to the next line */
     gap: 20px;
-    /* Add some spacing between artist items */
 }
 
 /* Styles for each individual artist item */
