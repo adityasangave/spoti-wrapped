@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import './Details.css'
 
+//main development branch
+
 export default function Details() {
   const [trackInfo, setTrackInfo] = useState();
   const [artistInfo, setArtistInfo] = useState();
@@ -17,7 +19,7 @@ export default function Details() {
           'choice': params.get('choice')
         }
       });
-      return response.data;
+      return response.data; 
     } catch (error) {
       console.error('Error:', error.message);
       return null;
