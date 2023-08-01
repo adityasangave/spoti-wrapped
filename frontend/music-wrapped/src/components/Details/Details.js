@@ -10,7 +10,7 @@ export default function Details() {
   const [loading, setLoading] = useState(true);
 
   const userTrackInfo = () => {
-    axios.get('https://music-wrapped.vercel.app/info/get-tracks', {
+    axios.get('info/get-tracks', {
       headers: {
         'access_token': params.get('access_token'),
         'choice': params.get('choice')
@@ -31,7 +31,7 @@ export default function Details() {
   }
 
   const userArtistInfo = () => {
-    axios.get('https://music-wrapped.vercel.app/info/get-artist', {
+    axios.get('info/get-artist', {
       headers: {
         'access_token': params.get('access_token'),
         'choice': params.get('choice')

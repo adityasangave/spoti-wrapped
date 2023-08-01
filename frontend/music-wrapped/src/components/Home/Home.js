@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <div id='choice'>
         <h1 className='mainHeading'>Spotify Wrapped Anytime, Anywhere</h1>
-        <a id="submit" className="submit-button" href={`https://music-wrapped.vercel.app/authenticate`}>
+        <a id="submit" className="submit-button" href={`authenticate`}>
             Get Started
         </a>
         {/* <form id='options'>
