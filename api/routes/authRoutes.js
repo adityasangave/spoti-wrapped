@@ -59,9 +59,9 @@ router.get('/callback', (req, res) => {
                     'access_token':access_token,
                     'choice': choice
                 });
-                res.redirect(`https://music-wrapped-main.vercel.app/wrapped?${options}`) 
+                res.redirect(`http://localhost:3000/wrapped?${options}`) 
             }
-            else res.redirect('https://music-wrapped-main.vercel.app' + querystring.stringify({'auth':false}))
+            else res.redirect('http://localhost:3000' + querystring.stringify({'auth':false}))
         })
 })
 
