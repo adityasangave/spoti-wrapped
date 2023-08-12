@@ -1,54 +1,51 @@
-const express = require('express')
-const dotenv = require('dotenv')
-const axios = require('axios')
-const querystring = require('querystring');
+const express = require('express');
+const axios = require('axios');
 
 const router = express.Router();
-const baseURI = "https://api.spotify.com/v1/me/"
+const baseURI = "https://api.spotify.com/v1/me/";
+
+// Common function to make API requests
+async function makeApiRequest(url, access_token, choice) {
+    try {
+        const headers = {
+            'Authorization': `Bearer ${access_token}`,
+        };
+        const params = {
+            'time_range': choice,
+        };
+
+        const response = await axios.get(url, { headers, params });
+        return response.data;
+    } catch (error) {
+        console.error('Error:', error.message);
+        throw new Error('API request failed');
+    }
+}
 
 router.get('/get-tracks', async (req, res) => {
-    console.log("triggered tracks");
-    const access_token = req.get('access_token');
-    const choice = req.get('choice')
-    console.log(access_token)
-    const headers = {
-        'Authorization': `Bearer ${access_token}`,
-    };
-    let options = querystring.stringify({
-        'time_range' :choice
-    })
-    const url = `${baseURI}top/tracks`;
-
     try {
-        const response = await axios.get(url, { headers });
-        res.status(200).json(response.data);
+        const access_token = req.get('access_token');
+        const choice = req.query.choice;
+        const url = `${baseURI}top/tracks`;
+
+        const responseData = await makeApiRequest(url, access_token, choice);
+        res.status(200).json(responseData);
     } catch (error) {
-        console.error('Error:', error.message);
         res.sendStatus(500);
     }
 });
-
 
 router.get('/get-artist', async (req, res) => {
-    console.log("triggered tracks");
-    const access_token = req.get('access_token');
-    const choice = req.get('choice')
-    const headers = {
-        'Authorization': `Bearer ${access_token}`,
-    };
-    // let options = querystring.stringify({
-    //     'time_range':choice
-    // })
-    const url = `${baseURI}top/artists`;
-
     try {
-        const response = await axios.get(url, { headers });
-        res.status(200).json(response.data);
+        const access_token = req.get('access_token');
+        const choice = req.query.choice;
+        const url = `${baseURI}top/artists`;
+
+        const responseData = await makeApiRequest(url, access_token, choice);
+        res.status(200).json(responseData);
     } catch (error) {
-        console.error('Error:', error.message);
         res.sendStatus(500);
     }
 });
 
-
-module.exports = router
+module.exports = router;
