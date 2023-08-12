@@ -17,7 +17,7 @@ router.get('/get-tracks', async (req, res) => {
     let options = querystring.stringify({
         'time_range' :choice
     })
-    const url = `https://api.spotify.com/v1/me/top/tracks`;
+    const url = `${baseURI}top/tracks`;
 
     try {
         const response = await axios.get(url, { headers });
@@ -39,7 +39,7 @@ router.get('/get-artist', async (req, res) => {
     // let options = querystring.stringify({
     //     'time_range':choice
     // })
-    const url = `https://api.spotify.com/v1/me/top/artists`;
+    const url = `${baseURI}top/artists`;
 
     try {
         const response = await axios.get(url, { headers });
