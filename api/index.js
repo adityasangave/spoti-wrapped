@@ -1,12 +1,13 @@
 const express = require('express')
 const authRoutes = require('./routes/authRoutes')
 var cors = require('cors')
+const config = require('./config')
 
 const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin: config.frontendUrl, //"http://localhost:3000",
     methods:["GET"]
 }))
 

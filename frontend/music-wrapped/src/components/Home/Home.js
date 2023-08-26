@@ -6,9 +6,10 @@ export default function Home() {
 
   return (
     <div>
+      {console.log(process.env.REACT_APP_API_URL)}
       <div id='choice'>
         <h1 className='mainHeading'>Spotify Wrapped Anytime, Anywhere</h1>
-        <a id="submit" className="submit-button" href={`https://music-wrapped.vercel.app/authenticate`}>
+        <a id="submit" className="submit-button" href={`${process.env.REACT_APP_API_URL}authenticate`}>
             Get Started
         </a>
         {/* <form id='options'>
