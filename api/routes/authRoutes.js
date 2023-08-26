@@ -2,11 +2,15 @@ const express = require('express')
 const dotenv = require('dotenv')
 const querystring = require('querystring');
 const request = require('request')
+const config = require('../config')
 
 dotenv.config()
 const router = express.Router()
 let choice;
+
 router.get('/authenticate', (req, res) => {
+    console.log(config.frontendUrl);
+    
     // Authenticate user here with spotify
     let client_id = process.env.CLIENT_ID
     let redirect_uri = process.env.REDIRECT_URI
@@ -17,7 +21,7 @@ router.get('/authenticate', (req, res) => {
     console.log("triggered")
     res.set({
         "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "https://music-wrapped-main.vercel.app/",
+        "Access-Control-Allow-Origin": config.frontendUrl  // "https://music-wrapped-main.vercel.app/",
     });
     const queryParameters = querystring.stringify({
         response_type: 'code',
@@ -59,9 +63,9 @@ router.get('/callback', (req, res) => {
                     'access_token':access_token,
                     'choice': choice
                 });
-                res.redirect(`https://music-wrapped-main.vercel.app/wrapped?${options}`) 
+                res.redirect(`${config.frontendUrl}/wrapped?${options}`) 
             }
-            else res.redirect('https://music-wrapped-main.vercel.app' + querystring.stringify({'auth':false}))
+            else res.redirect(config.frontendUrl + querystring.stringify({'auth':false}))
         })
 })
 
