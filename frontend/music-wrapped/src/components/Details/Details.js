@@ -9,60 +9,45 @@ export default function Details() {
   const [params, setParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
 
-  const userTrackInfo = () => {
-    axios.get('get-tracks', {
+  const fetchData = (endpoint, callback) => {
+    axios.get(endpoint, {
       headers: {
         'access_token': params.get('access_token'),
         'choice': params.get('choice')
       }
     })
-      .then((response) => {
-        return response.data;
-      })
+      .then((response) => response.data)
       .then((data) => {
-        setLoading(false)
+        setLoading(false);
+        callback(data);
         console.log(data);
-        setTrackInfo(data);
       })
       .catch((error) => {
-        setLoading(false)
+        setLoading(false);
         console.error('Error:', error.message);
       });
-  }
+  };
 
-  const userArtistInfo = () => {
-    axios.get('get-artist', {
-      headers: {
-        'access_token': params.get('access_token'),
-        'choice': params.get('choice')
-      }
-    })
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        setLoading(false)
-        setArtistInfo(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        setLoading(false)
-        console.error('Error:', error.message);
-      });
-  }
+  const fetchTrackInfo = () => {
+    fetchData('get-tracks', setTrackInfo);
+  };
+
+  const fetchArtistInfo = () => {
+    fetchData('get-artist', setArtistInfo);
+  };
 
   useEffect(() => {
     console.log(params.get('access_token'));
-
-    userTrackInfo();
-    userArtistInfo();
+    fetchTrackInfo();
+    fetchArtistInfo();
   }, []);
+
 
   const renderInfo = () => {
     return (
       <div className='container'>
-      <div>
-      <h1 className='heading tracks'>Your Top Songs</h1>
+        <div>
+          <h1 className='heading tracks'>Your Top Songs</h1>
           <div className='trackContainer'>
             {trackInfo?.items.slice(0, 5).map((item) => (
               <div key={item.id} className='trackItem card'>
@@ -74,23 +59,23 @@ export default function Details() {
               </div>
             ))}
           </div>
-      </div>
-        
+        </div>
+
 
 
         <div className='artistInfo'>
           <h1 className='heading tracks'>Your Top Artists</h1>
-            <div className='artistContainer'>
-              {artistInfo?.items.slice(0, 5).map((artist) => (
-                <div key={artist.id} className='artistItem'>
-                  <img src={artist.images[0].url} alt={artist.name} className='artistImage' />
-                  <div className='artistDetails'>
-                    <h3 className='artistName1'>{artist.name}</h3>
-                    {/* <p className='artistGenres'>Genres: {artist.genres.join(', ')}</p> */}
-                  </div>
+          <div className='artistContainer'>
+            {artistInfo?.items.slice(0, 5).map((artist) => (
+              <div key={artist.id} className='artistItem'>
+                <img src={artist.images[0].url} alt={artist.name} className='artistImage' />
+                <div className='artistDetails'>
+                  <h3 className='artistName1'>{artist.name}</h3>
+                  {/* <p className='artistGenres'>Genres: {artist.genres.join(', ')}</p> */}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
