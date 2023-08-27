@@ -7,8 +7,9 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: "https://music-wrapped-main.vercel.app", //"http://localhost:3000",
-    methods:["GET"]
+    origin: ["https://music-wrapped-main.vercel.app",
+        "http://localhost:3000"],
+    methods: ["GET"]
 }))
 
 app.use('/', authRoutes)
